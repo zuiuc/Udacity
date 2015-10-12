@@ -1,6 +1,11 @@
 /** {
 	border: 1px solid red !important;
 }*/
+
+img, embed, object, videos{
+	max-width:100%;
+}
+
 * {
 	font-family: "Poiret One", cursive;
 }
