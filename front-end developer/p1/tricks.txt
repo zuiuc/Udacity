@@ -1,0 +1,7 @@
+In every css files 
+add :
+img, embed, object, videos{
+	max-width:100 % 
+}
+
+to prevent overflow
