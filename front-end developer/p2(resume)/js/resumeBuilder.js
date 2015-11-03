@@ -81,14 +81,17 @@ var works = {
     ]
 };
 
-$(document).click(function(loc) {
+/*$(document).click(function(loc) {
     var x = loc.pageX;
     var y = loc.pageY;
 
     logClicks(x, y);
-});
+});*/
 
-function biodis() {
+
+
+bio.display = function() {
+
     var name = bio.name;
     var role = bio.role;
     var formattedName = HTMLheaderName.replace("%data%", name);
@@ -100,149 +103,36 @@ function biodis() {
 
     var formattedbiopic = HTMLbioPic.replace("%data%", "images/Qi.jpg");
     $("#header").append(formattedbiopic);
-}
 
-biodis();
-
-
-
-
-//append the contact page
-
-
-function contactdis() {
-    var formattedMobile = HTMLmobile.replace("%data%", "(217)979-2059");
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 
     $("#header").append(formattedMobile);
 
-    var formattedEmail = HTMLemail.replace("%data%", "qzhao1@scu.edu");
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
     $("#header").append(formattedEmail);
 
-    var formattedGithub = HTMLgithub.replace("%data%", "zuiuc");
+    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
     $("#header").append(formattedGithub);
 
-    var formattedLocation = HTMLlocation.replace("%data%", "San Jose");
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
     $("#header").append(formattedLocation);
 
     //append welcome message
     var formattedwelcomeMSG = HTMLwelcomeMsg.replace("%data%", "Welcome to Qi Zhao's Resume Page!");
     $("#header").append(formattedwelcomeMSG);
-}
 
-contactdis();
-
-bio.display = function() {
+    //append skills
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
 
-        for (var skill in bio.skills) {
+        for (i=0;i<bio.skills.length;i++) {
 
-            var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
+            var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
 
             $("#skills").append(formattedSkills);
         }
     }
-};
-
-bio.display();
-
-works.display = function() {
-    for (var work in works.works) {
-        $("#workExperience").append(HTMLworkStart);
-
-        var formattedEmployer = HTMLworkEmployer.replace("%data%", works.works[work].employer);
-        if (work === 0) {
-            formattedEmployer = formattedEmployer.replace("#", "https://www.ece.illinois.edu/");
-        }
-        $(".work-entry:last").append(formattedEmployer);
-
-        var formattedTitle = HTMLworkTitle.replace("%data%", works.works[work].title);
-        $(".work-entry:last").append(formattedTitle);
-
-        var formattedDates = HTMLworkDates.replace("%data%", works.works[work].dates);
-        $(".work-entry:last").append(formattedDates);
-
-        var formattedLocation = HTMLworkLocation.replace("%data%", works.works[work].location);
-        $(".work-entry:last").append(formattedLocation);
-
-        var formattedDescription = HTMLworkDescription.replace("%data%", works.works[work].description);
-        $(".work-entry:last").append(formattedDescription);
-
-
-    }
-};
-
-works.display();
-
-projects.display = function() {
-    for (var project in projects.projects) {
-        $("#projects").append(HTMLprojectStart);
-
-
-
-
-        if (project === 0) {
-            var formattedprojectTitle = HTMLTitle.replace("%data%", projects.projects[project].title);
-            formattedprojectTitle = formattedprojectTitle.replace("#", "https://github.com/zuiuc/Udacity/tree/master/front-end%20developer");
-        } else if (project === 1) {
-            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-            var formattedprojectTitle = formattedprojectTitle.replace("#", "https://github.com/zuiuc/2048-game");
-        } else if (project === 2) {
-            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-            var formattedprojectTitle = formattedprojectTitle.replace("#", "https://courses.engr.illinois.edu/ece445/getfile.asp?id=5617");
-        } else {
-            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-        }
-
-        $(".project-entry:last").append(formattedprojectTitle);
-
-        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-        $(".project-entry:last").append(formattedDates);
-
-        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].descriptions);
-        $(".project-entry:last").append(formattedDescription);
-    }
-};
-
-projects.display();
-
-
-education.display = function() {
-    for (var school in education.schools) {
-        $("#education").append(HTMLschoolStart);
-
-        var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
-        $(".education-entry:last").append(formattedName);
-
-        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-        $(".education-entry:last").append(formattedDegree);
-
-        var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school]["graduation date"]);
-        $(".education-entry:last").append(formattedDates);
-
-        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-        $(".education-entry:last").append(formattedLocation);
-
-        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-        $(".education-entry:last").append(formattedMajor);
-
-
-    }
-};
-
-education.display();
-
-$("#mapDiv").append(googleMap);
-
-function footerdis() {
-
-    var formattedMobile = HTMLmobile.replace("%data%", "(217)979-2059");
-
-    var formattedEmail = HTMLemail.replace("%data%", "qzhao1@scu.edu");
-
-    var formattedGithub = HTMLgithub.replace("%data%", "zuiuc");
-
-    var formattedLocation = HTMLlocation.replace("%data%", "San Jose");
+    //footer display
 
     $("#footerContacts").append(formattedMobile);
 
@@ -254,6 +144,93 @@ function footerdis() {
 
 
     $("#footerContacts").append(formattedLocation);
-}
 
-footerdis();
+
+};
+
+bio.display();
+
+works.display = function() {
+    for (i=0;i < works.works.length;i++) {
+        $("#workExperience").append(HTMLworkStart);
+
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", works.works[i].employer);
+        if (i === 0) {
+            formattedEmployer = formattedEmployer.replace("#", "https://www.ece.illinois.edu/");
+        }
+        $(".work-entry:last").append(formattedEmployer);
+
+        var formattedTitle = HTMLworkTitle.replace("%data%", works.works[i].title);
+        $(".work-entry:last").append(formattedTitle);
+
+        var formattedDates = HTMLworkDates.replace("%data%", works.works[i].dates);
+        $(".work-entry:last").append(formattedDates);
+
+        var formattedLocation = HTMLworkLocation.replace("%data%", works.works[i].location);
+        $(".work-entry:last").append(formattedLocation);
+
+        var formattedDescription = HTMLworkDescription.replace("%data%", works.works[i].description);
+        $(".work-entry:last").append(formattedDescription);
+
+
+    }
+};
+
+works.display();
+
+projects.display = function() {
+    for (i=0;i<projects.projects.length;i++) {
+        $("#projects").append(HTMLprojectStart);
+        if (i === 0) {
+            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+            formattedprojectTitle = formattedprojectTitle.replace("#", "https://github.com/zuiuc/Udacity/tree/master/front-end%20developer");
+        } else if (i === 1) {
+            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+            var formattedprojectTitle = formattedprojectTitle.replace("#", "https://github.com/zuiuc/2048-game");
+        } else if (i === 2) {
+            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+            var formattedprojectTitle = formattedprojectTitle.replace("#", "https://courses.engr.illinois.edu/ece445/getfile.asp?id=5617");
+        } else {
+            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+        }
+
+        $(".project-entry:last").append(formattedprojectTitle);
+
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+        $(".project-entry:last").append(formattedDates);
+
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].descriptions);
+        $(".project-entry:last").append(formattedDescription);
+    }
+};
+
+projects.display();
+
+
+education.display = function() {
+    for (i=0;i<education.schools.length;i++) {
+        $("#education").append(HTMLschoolStart);
+
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
+        $(".education-entry:last").append(formattedName);
+
+        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+        $(".education-entry:last").append(formattedDegree);
+
+        var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i]["graduation date"]);
+        $(".education-entry:last").append(formattedDates);
+
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+        $(".education-entry:last").append(formattedLocation);
+
+        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+        $(".education-entry:last").append(formattedMajor);
+
+
+    }
+};
+
+education.display();
+
+$("#mapDiv").append(googleMap);
+
