@@ -17,7 +17,7 @@ var projects = {
     "projects": [{
         "title": "Web Development Project (Udacity Front-end Nano Degree)",
         "dates": "Summer 2015",
-        "descriptions": "A nanodegree program helps to sharp Font-end programming skils using HTML, CSS, JS, BootStrap, AJAX and Jquey. The degree program consits of six individual projects: Portfolio Site, Interactive Resume, Classic Arcade Game Clone, Website Optimization, Neighborhood Map, and Feed Reader Testing. Currently building the Classic Arcade Game. Finished projects: Personal Portfolio and Interactive Resume"
+        "descriptions": "A nanodegree program helps to sharp Font-end programming skills using HTML, CSS, JS, Bootstrap, AJAX and Jquey. The degree program consits of six individual projects: Portfolio Site, Interactive Resume, Classic Arcade Game Clone, Website Optimization, Neighborhood Map, and Feed Reader Testing. Currently building the Classic Arcade Game. Finished projects: Personal Portfolio and Interactive Resume"
 
     }, {
         "title": "2048 Game Design",
