@@ -9,28 +9,26 @@ This is empty on purpose! Your code to build the resume will go here.
             "title": "Web Development Project (Udacity Front-end Nano Degree)",
             "dates": "Summer 2015",
             "descriptions":
-                "Currently building an interactive online resume webpage Implemented knowledge of HTML, CSS and JS on the design and development of personal portfolio page project Future projects include: Neighborhood map website, Arcade game clone website and health tracker website"
+                "A nanodegree program helps to sharp Font-end programming skils using HTML, CSS, JS, BootStrap, AJAX and Jquey. The degree program consits of six individual projects: Portfolio Site, Interactive Resume, Classic Arcade Game Clone, Website Optimization, Neighborhood Map, and Feed Reader Testing. Currently building the Classic Arcade Game. Finished projects: Personal Portfolio and Interactive Resume"
 
         },
         {
             "title": "2048 Game Design",
             "dates": "Spring 2015",
             "descriptions":
-                "Implemented the game mechanics(moving tiles, merge tiles etc.) with object-oriented programming language \ Had deeper understanding about event handling in Java programming\ Fortified game board GUI designing and debugging skills"
-
+                "A class project to make my own 2048 game based on the original game using java. Game machanics is the same. Implemented the game logic and GUI design."
         },
         {
             "title": "Alternative Home Security System (Senior Design Project)",
             "dates": "Spring 2014",
             "descriptions":
-                "Designed a key-less entry system which consists of height, weight and eye-blink detection modules \ Implemented the system using PCB board and microprocessor coding with C\ Reverse-engineered a commercial digital weight scale to obtain signal which can be used in the microcontroller in the project\ Fortified writing and presentation skills to present the design as a product"
-
+                "Designed a key-less entry system which consists of height, weight and eye-blink detection modules Implemented the system using PCB board and microprocessor coding with C. Reverse-engineered a commercial digital weight scale to obtain signal which can be used in the microcontroller in the project. Fortified writing and presentation skills to present the design as a product"
         },
         {
             "title": "Game Design Project",
             "dates": "Spring 2013",
             "descriptions":
-                "Designed the logic and GUI of the game, Tank Battle, by programming VHDL code on FGPA board\ Implemented the game by keyboard and demonstrated the content on screen using FPGA board connection\ Finalized the game with the physics features, keyboard input recognition, game logic, enemy AI, LED Indicator on FGPA"
+                "Designed the logic and GUI of the game, Tank Battle, by programming VHDL code on FGPA board. Implemented the game by keyboard and demonstrated the content on screen using FPGA board connection. Finalized the game with the physics features, keyboard input recognition, game logic, enemy AI, LED Indicator on FGPA"
 
         }
     ]
@@ -73,6 +71,19 @@ This is empty on purpose! Your code to build the resume will go here.
  	]
  }
 
+ var works = {
+    "works" : [
+        {
+            "employer" : "University of Illinois, Urbana-Champaign ECE Department",
+            "title" : "Undergraduate Teaching Assistant",
+            "dates" : "Fall 2013",
+            "location" : "Champaign",
+            "description" : "Helped undergraduate students with understanding of course materials. Reponsible for collecting and grading of the homework."
+        }
+
+    ]
+ }
+
  $(document).click(function(loc) {
     var x = loc.pageX;
     var y = loc.pageY;
@@ -80,6 +91,7 @@ This is empty on purpose! Your code to build the resume will go here.
     logClicks(x,y);
  });
 
+ function biodis() {
  var name = bio.name;
  var role = bio.role;
  var formattedName = HTMLheaderName.replace("%data%", name);
@@ -91,6 +103,9 @@ This is empty on purpose! Your code to build the resume will go here.
 
  var formattedbiopic = HTMLbioPic.replace("%data%", "images/Qi.jpg");
  $("#header").append(formattedbiopic);
+ }
+
+ biodis();
 
 
 
@@ -98,7 +113,7 @@ This is empty on purpose! Your code to build the resume will go here.
  //append the contact page
 
 
-
+ function contactdis() {
  var formattedMobile = HTMLmobile.replace("%data%", "(217)979-2059");
 
  $("#header").append(formattedMobile);
@@ -115,6 +130,9 @@ This is empty on purpose! Your code to build the resume will go here.
 //append welcome message
  var formattedwelcomeMSG = HTMLwelcomeMsg.replace("%data%", "Welcome to Qi Zhao's Resume Page!");
  $("#header").append(formattedwelcomeMSG);
+ }
+
+ contactdis();
 
 bio.display = function() {
  if(bio.skills.length > 0){
@@ -131,7 +149,33 @@ bio.display = function() {
 
 bio.display();
 
+ works.display = function() {
+    for (work in works.works){
+       $("#workExperience").append(HTMLworkStart);
 
+       var formattedEmployer = HTMLworkEmployer.replace("%data%", works.works[work].employer);
+        if (work == 0){
+        formattedEmployer = formattedEmployer.replace("#", "https://www.ece.illinois.edu/");
+       }
+        $(".work-entry:last").append(formattedEmployer);
+
+        var formattedTitle = HTMLworkTitle.replace("%data%", works.works[work].title);
+        $(".work-entry:last").append(formattedTitle);
+
+        var formattedDates = HTMLworkDates.replace("%data%", works.works[work].dates);
+        $(".work-entry:last").append(formattedDates);
+
+        var formattedLocation = HTMLworkLocation.replace("%data%", works.works[work].location);
+        $(".work-entry:last").append(formattedLocation);
+
+        var formattedDescription = HTMLworkDescription.replace("%data%", works.works[work].description);
+        $(".work-entry:last").append(formattedDescription);
+
+
+    }
+ }
+
+ works.display();
 
  projects.display = function() {
     for (project in projects.projects){
@@ -195,6 +239,30 @@ bio.display();
  education.display();
 
  $("#mapDiv").append(googleMap);
+
+ function footerdis() {
+
+     var formattedMobile = HTMLmobile.replace("%data%", "(217)979-2059");
+
+     var formattedEmail = HTMLemail.replace("%data%", "qzhao1@scu.edu");
+
+     var formattedGithub = HTMLgithub.replace("%data%", "zuiuc");
+
+     var formattedLocation = HTMLlocation.replace("%data%", "San Jose");
+
+     $("#footerContacts").append(formattedMobile);
+
+
+     $("#footerContacts").append(formattedEmail);
+
+
+     $("#footerContacts").append(formattedGithub);
+
+
+     $("#footerContacts").append(formattedLocation);
+ }
+
+ footerdis();
 
 
 
