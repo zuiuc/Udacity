@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
 
+
         <title>Qi Zhao's Portfolio Page</title>
     </head>
     <body>
@@ -30,18 +31,18 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <img class="img-responsive" src="images/resume.page.jpg" data-toggle="modal" data-target="#project1" alt= "Resume" >
+                    <img class="img-responsive img-zoom" src="images/resume.page.jpg" data-toggle="modal" data-target="#project1" alt= "Resume" >
                     <h3><a href="http://qi-zhao.com/resume">Resume</a></h3>
                     <p><a href="http://qi-zhao.com/resume">Resume Page Link</a></p>
                     <p><a href="https://github.com/zuiuc/Udacity/tree/master/front-end%20developer/p2(resume)">Github Page</a></p>
                 </div>
                 <div class="col-md-4">
-                    <img class="img-responsive" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project2" alt= "Arcade Game" >
+                    <img class="img-responsive img-zoom" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project2" alt= "Arcade Game" >
                     <h3>Arade Game</h3>
                     <p><a href="http://github.com/zuiuc">http://github.com/zuiuc</a></p>
                 </div>
                 <div class="col-md-4">
-                    <img class="img-responsive" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project3" alt= "Website Optimization" >
+                    <img class="img-responsive img-zoom" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project3" alt= "Website Optimization" >
                     <h3>Website Optimization</h3>
                     <p><a href="http://github.com/zuiuc">http://github.com/zuiuc</a></p>
                 </div>
@@ -49,17 +50,17 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <img class="img-responsive" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project4" alt= "Neighborhood Map" >
+                    <img class="img-responsive img-zoom" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project4" alt= "Neighborhood Map" >
                     <h3>Neighborhood Map</h3>
                     <p><a href="https://github.com/zuiuc">http://github.com/zuiuc</a></p>
                 </div>
                 <div class="col-md-4">
-                    <img class="img-responsive" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project5" alt= "Health Tracker" >
+                    <img class="img-responsive img-zoom" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project5" alt= "Health Tracker" >
                     <h3>Health Tracker</h3>
                     <p><a href="http://github.com/zuiuc">http://github.com/zuiuc</a></p>
                 </div>
                 <div class="col-md-4">
-                    <img class="img-responsive" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project6" alt= "Feed Reader Testing" >
+                    <img class="img-responsive img-zoom" src="http://placehold.it/350x150" data-toggle="modal" data-target="#project6" alt= "Feed Reader Testing" >
                     <h3>Feed Reader Testing</h3>
                     <p><a href="http://github.com/zuiuc">http://github.com/zuiuc</a></p>
                 </div>
@@ -184,5 +185,17 @@
         </div>
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+        <script>
+          $(document).ready(function(){
+          $('.img-zoom').hover(function() {
+            $(this).addClass('transition');
+
+          }, function() {
+            $(this).removeClass('transition');
+          });
+          });
+        </script>
     </body>
 </html>
