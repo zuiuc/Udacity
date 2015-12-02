@@ -1,6 +1,4 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
-
-for self-checking their submission.
+This is a classic arcade game clone for the game frogger. Player's objective is to move the character to water with arraw keys. In the process, the character should not touch any of the bugs, otherwise the position will be reset. Once the player reach the water, the position will be reset.
