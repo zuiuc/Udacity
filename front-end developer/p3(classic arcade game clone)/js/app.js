@@ -17,9 +17,17 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + this.speed * dt;
-    if (this.x > 505){
+    if (this.x > 505) {
         this.x = -101;
         this.speed = getRandomSpeed(70, 500);
+    }
+    var bugXLeftRange = this.x - 50;
+    var bugXRightRange = this.x + 50;
+    var bugYTopRange = this.y - 50;
+    var bugYBottomRange = this.y + 50;
+
+    if (player.x > bugXLeftRange && player.x < bugXRightRange && player.y > bugYTopRange && player.y < bugYBottomRange) {
+        player.resetplayer();
     }
 };
 
@@ -38,61 +46,62 @@ var player_obj = function() {
     this.x = playerx;
     this.y = playery;
     this.sprite = "images/char-cat-girl.png";
-}
+
+};
 
 //this is empty because the player will not update itself, it stays at the same position
 player_obj.prototype.update = function() {
 
-}
+};
 
 // Draw the player on the screen
 player_obj.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 player_obj.prototype.resetplayer = function() {
     this.x = playerx;
     this.y = playery;
-}
+};
 
 //the following code handles the input and do proper movement according to the input
 //the code also detect if the player is reached at the wall and prevent the player to get out of the wall
 player_obj.prototype.handleInput = function(input) {
     var Horizontal_step = 101;
     var Vertical_step = 83;
-    if (input === "up"){
-        if(this.y <= 83){
+    if (input === "up") {
+        if (this.y <= 83) {
             this.resetplayer();
-        }else{
-        this.y -= Vertical_step;
+        } else {
+            this.y -= Vertical_step;
         }
     }
 
-    if (input === "down"){
-        if(this.y >= 400){
+    if (input === "down") {
+        if (this.y >= 400) {
             this.y = this.y;
 
-        }else{
-        this.y += Vertical_step;
+        } else {
+            this.y += Vertical_step;
         }
     }
 
-    if (input === "left"){
-        if(this.x <= 34){
+    if (input === "left") {
+        if (this.x <= 34) {
             this.x = this.x;
-        }else{
-        this.x -= Horizontal_step;
+        } else {
+            this.x -= Horizontal_step;
         }
     }
 
-    if (input === "right"){
-        if(this.x >= 366){
+    if (input === "right") {
+        if (this.x >= 366) {
             this.x = this.x;
-        }else{
-        this.x += Horizontal_step;
+        } else {
+            this.x += Horizontal_step;
         }
     }
-}
+};
 //helper method to get speed within a range
 function getRandomSpeed(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
