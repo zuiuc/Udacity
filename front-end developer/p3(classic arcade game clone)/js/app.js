@@ -55,7 +55,8 @@ player_obj.prototype.resetplayer = function() {
     this.y = playery;
 }
 
-
+//the following code handles the input and do proper movement according to the input
+//the code also detect if the player is reached at the wall and prevent the player to get out of the wall
 player_obj.prototype.handleInput = function(input) {
     var Horizontal_step = 101;
     var Vertical_step = 83;
@@ -68,24 +69,28 @@ player_obj.prototype.handleInput = function(input) {
     }
 
     if (input === "down"){
-        //if(){
+        if(this.y >= 400){
+            this.y = this.y;
 
-        //}
+        }else{
         this.y += Vertical_step;
+        }
     }
 
     if (input === "left"){
-        //if(){
-
-        //}
-        this.x -=  Horizontal_step;
+        if(this.x <= 34){
+            this.x = this.x;
+        }else{
+        this.x -= Horizontal_step;
+        }
     }
 
     if (input === "right"){
-        //if(){
-
-        //}
+        if(this.x >= 366){
+            this.x = this.x;
+        }else{
         this.x += Horizontal_step;
+        }
     }
 }
 //helper method to get speed within a range
