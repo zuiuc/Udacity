@@ -18,8 +18,7 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x = this.x + this.speed * dt;
     if (this.x > 505) {
-        this.x = -101;
-        this.speed = getRandomSpeed(70, 500);
+        this.reset();
     }
     var bugXLeftRange = this.x - 50;
     var bugXRightRange = this.x + 50;
@@ -27,8 +26,13 @@ Enemy.prototype.update = function(dt) {
     var bugYBottomRange = this.y + 50;
 
     if (player.x > bugXLeftRange && player.x < bugXRightRange && player.y > bugYTopRange && player.y < bugYBottomRange) {
-        player.resetplayer();
+        player.resetPlayer();
     }
+};
+
+Enemy.prototype.reset = function(){
+    this.x = -101;
+        this.speed = getRandomSpeed(70, 500);
 };
 
 
@@ -42,7 +46,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var playerx = 200;
 var playery = 400;
-var player_obj = function() {
+var Player = function() {
     this.x = playerx;
     this.y = playery;
     this.sprite = "images/char-cat-girl.png";
@@ -50,23 +54,23 @@ var player_obj = function() {
 };
 
 //this is empty because the player will not update itself, it stays at the same position
-player_obj.prototype.update = function() {
+Player.prototype.update = function() {
 
 };
 
 // Draw the player on the screen
-player_obj.prototype.render = function() {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-player_obj.prototype.resetplayer = function() {
+Player.prototype.resetPlayer = function() {
     this.x = playerx;
     this.y = playery;
 };
 
 //the following code handles the input and do proper movement according to the input
 //the code also detect if the player is reached at the wall and prevent the player to get out of the wall
-player_obj.prototype.handleInput = function(input) {
+Player.prototype.handleInput = function(input) {
     var Horizontal_step = 101;
     var Vertical_step = 83;
     if (input === "up") {
@@ -116,7 +120,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 // Place the player object in a variable called player
-var player = new player_obj();
+var player = new Player();
 
 
 // This listens for key presses and sends the keys to your
