@@ -75,7 +75,7 @@ Player.prototype.handleInput = function(input) {
     var Vertical_step = 83;
     if (input === "up") {
         if (this.y <= 83) {
-            this.resetplayer();
+            this.resetPlayer();
         } else {
             this.y -= Vertical_step;
         }
