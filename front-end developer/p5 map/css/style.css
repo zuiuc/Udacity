@@ -1,0 +1,46 @@
+
+
+
+#search_bar {
+	display: block;
+	height: auto;
+	position: absolute;
+	width: 280px;
+    max-height: 549px;
+    background-color: rgba(255,255,255,.9);
+    border: solid 2px gray;
+    overflow: hidden;
+	z-index:3;
+	margin-left:20px;
+	margin-right: auto;
+	margin-top: 40px;
+}
+
+#search_input {
+	margin-left:auto;
+	margin-right: auto;
+}
+
+#input{
+	margin: 15px 0 5px 40px;
+}
+#search_result {
+	max-height: 480px;
+    overflow: scroll;
+    margin: 0 5px;
+}
+
+#google_maps {
+	overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Set z-index to 0 as it will be on a layer below the contact form */
+}
+
+a{
+	color: #333333;
+	text-decoration: none;
+}

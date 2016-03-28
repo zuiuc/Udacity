@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="img/favicon.ico" />
+        <link rel="stylesheet" href="css/style.css">
+
+
+
+        <title>Neighborhood Map</title>
+    </head>
+    <body>
+      <div class="row">
+        <div id="search_bar" style="display: block; max-height:500px;">
+          <div id="search_input"><input id="input" placeholder="Search…" type="text" data-bind="textInput: query, valueUpdate: 'keydown'" autocomplete="off"></div>
+          <div id="search_result">
+            <ul data-bind="template: {name: 'marker', foreach:markers}">
+                </ul>
+                <script type="text/html" id="marker">
+                    <div data-bind="visible: visible">
+                        <a href="#" data-bind="attr: {id: id}, click: $parent.moveToMarker">
+                            <li>
+                                <strong data-bind="text: title"></strong>
+                                <p data-bind="text: streetAddress"></p>
+                                <p data-bind="text: cityAddress"></p>
+                            </li>
+                        </a>
+                    </div>
+                    <br>
+
+                </script>
+          </div>
+        </div>
+        <div id="google_maps"></div>
+
+      </div>
+
+
+
+      <script src="js/knockout-3.4.0.js"></script>
+      <script src="js/jquery-1.11.3.min.js"></script>
+      <script src="js/main.js"></script>
+      <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=initialize"
+        async defer></script>
+
+    </body>
+</html>
