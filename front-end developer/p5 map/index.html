@@ -3,18 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="img/favicon.ico" />
+        <link rel="shortcut icon" href="img/favicon.ico">
         <link rel="stylesheet" href="css/style.css">
-
-
-
+        <link rel="stylesheet" href="css/responsive.css">
         <title>Neighborhood Map</title>
     </head>
     <body>
-      <div class="row">
-        <div id="search_bar" style="display: block; max-height:500px;">
-          <div id="search_input"><input id="input" placeholder="Search…" type="text" data-bind="textInput: query, valueUpdate: 'keydown'" autocomplete="off"></div>
-          <div id="search_result">
+      <div>
+        <div id="search-bar">
+          <div id="search-input"><input id="input" placeholder="Search…" type="text" data-bind="textInput: query, valueUpdate: 'keydown'" autocomplete="off"></div>
+          <div id="search-result">
             <ul data-bind="template: {name: 'marker', foreach:markers}">
                 </ul>
                 <script type="text/html" id="marker">
@@ -31,8 +29,12 @@
 
                 </script>
           </div>
+
         </div>
-        <div id="google_maps"></div>
+        <div id="toggle">
+            <button name="toggle_button" type="submit" value="" class="toggle-button">Toggle Search Bar</button>
+        </div>
+        <div id="google-maps"></div>
 
       </div>
 
@@ -42,7 +44,7 @@
       <script src="js/jquery-1.11.3.min.js"></script>
       <script src="js/main.js"></script>
       <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false&callback=initialize"
-        async defer></script>
+        async defer onerror="googlemapErrorHandler()"></script>
 
     </body>
 </html>

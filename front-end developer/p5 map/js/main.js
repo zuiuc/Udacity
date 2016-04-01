@@ -1,16 +1,16 @@
 "use strict";
-var map, address, infowindow;
+var map, infowindow;
 
 
 //initialize the map
 function initialize() {
-    var mapDiv = document.getElementById('google_maps');
+    var mapDiv = document.getElementById('google-maps');
     map = new google.maps.Map(mapDiv, {
         center: {
             lat: 37.41508,
             lng: -121.95608
         },
-        zoom: 14
+        zoom: 11
     });
     google.maps.event.addDomListener(window, "resize", function() {
         var center = map.getCenter();
@@ -46,15 +46,15 @@ function setMarkers(places) {
                     '" target="_blank">' + places[i].url + '</a>');
                 infowindow.open(map, places[i].holdmarker);
                 markers[i].holdmarker.setAnimation(google.maps.Animation.BOUNCE);
-                map.setCenter(markers[i].holdmarker.getPosition());
+                map.panTo(markers[i].holdmarker.getPosition());
                 map.setZoom(16);
                 setTimeout(function() {
                     markers[i].holdmarker.setAnimation(null);
                 }, 700);
-            }
+            };
         })(marker, i));
 
-        //this is to add a click event lisentner to the search result text
+        //this is to add a click event lisentner to the search result text----not used
         /*$('#search_result').on('click', '#nav' + i, (function(marker, i) {
             return function() {
             	google.maps.event.trigger(markers[i].holdmarker,'click');
@@ -178,6 +178,16 @@ var markers = [{
     display: true,
     visible: ko.observable(true),
     id: "nav9"
+},{
+    title: "Facebook HQ(Where I will be an intern Summer 2016, Yeah!)",
+    lat: 37.484575,
+    lng: -122.147924,
+    streetAddress: "12 Hacker Way",
+    cityAddress: "Menlo Park, CA",
+    url: "http://www.facebook.com",
+    display: true,
+    visible: ko.observable(true),
+    id: "nav10"
 }];
 
 
@@ -202,9 +212,11 @@ var viewModel = {
         }
         resetMap();
     },
+    //move to marker when click on the list elements in search bar
     moveToMarker: function(clickedElem){
     	var ElemTitle = clickedElem.title;
     	//console.log(ElemTitle);
+    	$("#search-bar").hide();
     	for (var i=0;i<markers.length;i++){
     		if (ElemTitle === markers[i].title){
     			google.maps.event.trigger(markers[i].holdmarker,'click');
@@ -215,3 +227,11 @@ var viewModel = {
 };
 viewModel.query.subscribe(viewModel.search);
 ko.applyBindings(viewModel);
+
+$(".toggle-button").click(function(){
+    $("#search-bar").toggle();
+});
+
+function googlemapErrorHandler(){
+	alert("The map cannot be loaded. Check your connection.");
+}

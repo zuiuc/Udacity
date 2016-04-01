@@ -1,0 +1,2 @@
+This is a interactive neighborhood map project/website created by Qi Zhao. To open the web page, simply right click the index.html and choose a web browser to open it. 
+Then you will see the webpage and its content. (Make sure to connect to the internet to let the google map work properly.)
