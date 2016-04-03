@@ -12,6 +12,37 @@
 	margin-top: 40px;
 }
 
+#wiki-search-bar {
+	display: block;
+	height: auto;
+	position: absolute;
+	top:75px;
+	right: 10px;
+	width: 280px;
+    max-height: 549px;
+    background-color: rgba(255,255,255,.9);
+    border: solid 2px gray;
+    overflow: scroll;
+	margin-left:20px;
+	margin-right: auto;
+	margin-top: 40px;
+}
+#wiki-search-input {
+	display: block;
+	height: auto;
+	position: absolute;
+	top:10px;
+	right: 10px;
+	width: 280px;
+    max-height: 549px;
+    background-color: rgba(255,255,255,.9);
+    border: solid 2px gray;
+    overflow: scroll;
+	margin-left:20px;
+	margin-right: auto;
+	margin-top: 40px;
+}
+
 #search-input {
 	margin-left:auto;
 	margin-right: auto;
@@ -59,6 +90,13 @@
 	display: block;
 	top:0px;
 	left: 100px;
+}
+
+#toggle-wiki {
+	position: absolute;
+	display: block;
+	top:0px;
+	right: 10px;
 }
 a {
 	color: #333333;

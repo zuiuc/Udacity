@@ -33,7 +33,6 @@ function setMarkers(places) {
             clickable: true
         });
 
-
         //this is to add a click event handler for click the marker and show info window
         google.maps.event.addListener(places[i].holdmarker, 'click', (function(marker, i) {
             return function() {
@@ -178,7 +177,7 @@ var markers = [{
     display: true,
     visible: ko.observable(true),
     id: "nav9"
-},{
+}, {
     title: "Facebook HQ(Where I will be an intern Summer 2016, Yeah!)",
     lat: 37.484575,
     lng: -122.147924,
@@ -213,25 +212,69 @@ var viewModel = {
         resetMap();
     },
     //move to marker when click on the list elements in search bar
-    moveToMarker: function(clickedElem){
-    	var ElemTitle = clickedElem.title;
-    	//console.log(ElemTitle);
-    	$("#search-bar").hide();
-    	for (var i=0;i<markers.length;i++){
-    		if (ElemTitle === markers[i].title){
-    			google.maps.event.trigger(markers[i].holdmarker,'click');
-    		}
-    	}
+    moveToMarker: function(clickedElem) {
+        var ElemTitle = clickedElem.title;
+        //console.log(ElemTitle);
+        $("#search-bar").hide();
+        for (var i = 0; i < markers.length; i++) {
+            if (ElemTitle === markers[i].title) {
+                google.maps.event.trigger(markers[i].holdmarker, 'click');
+            }
+        }
 
     }
 };
 viewModel.query.subscribe(viewModel.search);
 ko.applyBindings(viewModel);
 
-$(".toggle-button").click(function(){
+$("#toggle").click(function() {
     $("#search-bar").toggle();
 });
 
-function googlemapErrorHandler(){
-	alert("The map cannot be loaded. Check your connection.");
+$("#toggle-wiki").click(function() {
+    $("#wiki-search-bar").toggle();
+    $("#wiki-search-input").toggle();
+});
+
+function googlemapErrorHandler() {
+    alert("The map cannot be loaded. Check your connection.");
 }
+
+
+function loadData() {
+    var wikiTitle = $('#wiki-title').val();
+    var $wikiElem = $('#wiki-search-bar');
+    $wikiElem.text("");
+
+    var wikiUrl = 'http://en.wikipedia.org/w/api.' +
+        'php?action=opensearch&search=' + wikiTitle +
+        '&format=json&callback=wikiCallback';
+    console.log(wikiTitle);
+    var wikiRequestTimeout = setTimeout(function() {
+        $wikiElem.text("failed to get wikipedia resources");
+    }, 8000);
+
+
+    $.ajax({
+        url: wikiUrl,
+        dataType: "jsonp",
+        //jsonp:"callback",
+        success: function(response) {
+            var articleList = response[1];
+
+            for (var i = 0; i < articleList.length; i++) {
+                var articleStr = articleList[i];
+                var url = 'http://en.wikipedia.org/wiki/' +
+                    articleStr;
+                $wikiElem.append('<li><a href="' + url + '">' + articleStr + '</a></li>');
+                console.log(articleStr);
+            }
+
+            clearTimeout(wikiRequestTimeout);
+        }
+    });
+
+    return false;
+};
+
+$('#form-container').submit(loadData);

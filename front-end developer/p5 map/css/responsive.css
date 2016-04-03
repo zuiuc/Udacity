@@ -1,7 +1,26 @@
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
 	#search-bar {
+		width: 140px;
+		font-size: 8px;
+		display: none;
+	}
+	#wiki-search-bar {
+		width: 140px;
+		font-size: 8px;
+		display: none;
+	}
+	#wiki-search-input {
 		width: 180px;
 		font-size: 8px;
 		display: none;
 	}
+	#toggle-b {
+	width: 70px;
+	font-size: 8px;
+	}
+	#toggle-wiki-b {
+	width: 70px;
+	font-size: 8px;
+	}
 }
+
