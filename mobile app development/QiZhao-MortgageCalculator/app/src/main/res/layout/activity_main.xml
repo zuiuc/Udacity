@@ -31,7 +31,8 @@
         android:ems="10"
         android:id="@+id/editText3"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:hint="0.0" />
 
     <TextView
         android:layout_width="match_parent"
@@ -53,7 +54,8 @@
         android:ems="10"
         android:id="@+id/editText4"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:hint="5.0" />
 
     <TextView
         android:layout_width="match_parent"
@@ -73,14 +75,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginRight="16dp"
+        android:id="@+id/radioGroup">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7 years"
             android:id="@+id/radioButton"
-            android:checked="false" />
+            android:checked="true" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -96,6 +99,45 @@
             android:id="@+id/radioButton3"
             android:checked="false" />
     </RadioGroup>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Include Tax/Interest"
+        android:id="@+id/checkBox"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:checked="false" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:id="@+id/button"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Monthly Payment"
+        android:editable="false"
+        android:enabled="false"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold|italic"
+        android:textSize="16dp"
+        android:id="@+id/textView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+    <TextView
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="$xxxx"
+        android:id="@+id/textView2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textStyle="bold" />
 
 
 </LinearLayout>
